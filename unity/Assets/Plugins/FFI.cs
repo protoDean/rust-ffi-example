@@ -21,9 +21,16 @@ public class FFI
     }
 
     [DllImport("libffi_example")]
-    private static extern void send_ding(IntPtr baton);
-    public static void sendDing()
+    private static extern bool send_ding(IntPtr baton);
+    public static bool sendDing()
     {
-        send_ding(_baton);
+        return send_ding(_baton);
     }
+
+	[DllImport("libffi_example")]
+	private static extern double processHeavy();
+	public static double ProcessHeavy()
+	{
+		return processHeavy();
+	}
 }

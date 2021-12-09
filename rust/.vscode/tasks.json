@@ -1,0 +1,37 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cargo",
+			"subcommand": "build",
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "Rust: cargo build - rust"
+		},
+		{
+			"type": "shell",
+			"command": "cargo",
+			"args": ["build", "--release"],
+			"problemMatcher": [
+				"$rustc"
+			],
+			"group": "build",
+			"label": "Rust: Release Build",
+			
+		
+		},
+		{
+			
+			"type": "shell",
+			"command": "copy",
+			"args": ["target/release/libffi_example.dll", "../unity/Assets/Plugins"],
+			"group": "build",
+			"label": "Deploy",
+			"dependsOn" : "Rust: Release Build"
+		
+		}
+
+	]
+}

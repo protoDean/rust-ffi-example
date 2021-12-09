@@ -93,8 +93,21 @@ pub extern "C" fn disconnect_from_server(ptr: *mut *mut Baton) {
     }
 }
 
+
 #[no_mangle]
 pub extern "C" fn send_ding(ptr: *mut Baton) -> bool {
+
+	let mut num  ;
+
+	let stringVar = "Hi";
+
+	num = 5;
+
+	num = 7;
+
+	//stringVar = num;
+
+
     if !ptr.is_null() {
         match Baton::from_ptr(ptr).send_ding() {
             Ok(_) => true,
@@ -107,4 +120,25 @@ pub extern "C" fn send_ding(ptr: *mut Baton) -> bool {
     } else {
         false
     }
+
+	
+}
+
+#[no_mangle]
+pub extern "C" fn processHeavy() -> f64{
+   
+	let mut total : f64 = 0.0;
+	for elem in 0..1000000 {
+		let dividend = 1.0 / elem as f64;
+
+		total += dividend;
+	}
+
+	total
+}
+
+#[test]
+pub fn TestThing()
+{
+
 }
